@@ -1,0 +1,24 @@
+@use "../resources" as f;
+
+$largeLayouts: (
+  "phone": f.rem(375),
+  "medium": f.rem(768),
+  "desktop": f.rem(1444),
+);
+$smallLayouts: (
+  "phone": f.rem(374.98),
+  "medium": f.rem(767.98),
+  "desktop": f.rem(1439.98),
+);
+@mixin largeScreen($key) {
+  $size: map-get($largeLayouts, $key);
+  @media (min-width: $size) {
+    @content;
+  }
+}
+@mixin smallScreen($key) {
+  $size: map-get($smallLayouts, $key);
+  @media (max-width: $size) {
+    @content;
+  }
+}
